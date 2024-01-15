@@ -23,7 +23,7 @@ import mmseg_custom
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a segmentor')
-    parser.add_argument('config', help='train config file path')
+    parser.add_argument('config', help='train config file path', default='configs/ade20k/segformer_b2_ade20k_multistep.py')
     parser.add_argument('--work-dir', help='the dir to save logs and models')
     parser.add_argument(
         '--load-from', help='the checkpoint file to load weights from')
@@ -60,27 +60,27 @@ def parse_args():
         '--deterministic',
         action='store_true',
         help='whether to set deterministic options for CUDNN backend.')
-    parser.add_argument(
-        '--options',
-        nargs='+',
-        action=DictAction,
-        help="--options is deprecated in favor of --cfg_options' and it will "
-        'not be supported in version v0.22.0. Override some settings in the '
-        'used config, the key-value pair in xxx=yyy format will be merged '
-        'into config file. If the value to be overwritten is a list, it '
-        'should be like key="[a,b]" or key=a,b It also allows nested '
-        'list/tuple values, e.g. key="[(a,b),(c,d)]" Note that the quotation '
-        'marks are necessary and that no white space is allowed.')
-    parser.add_argument(
-        '--cfg-options',
-        nargs='+',
-        action=DictAction,
-        help='override some settings in the used config, the key-value pair '
-        'in xxx=yyy format will be merged into config file. If the value to '
-        'be overwritten is a list, it should be like key="[a,b]" or key=a,b '
-        'It also allows nested list/tuple values, e.g. key="[(a,b),(c,d)]" '
-        'Note that the quotation marks are necessary and that no white space '
-        'is allowed.')
+    # parser.add_argument(
+    #     '--options',
+    #     nargs='+',
+    #     action=DictAction,
+    #     help="--options is deprecated in favor of --cfg_options' and it will "
+    #     'not be supported in version v0.22.0. Override some settings in the '
+    #     'used config, the key-value pair in xxx=yyy format will be merged '
+    #     'into config file. If the value to be overwritten is a list, it '
+    #     'should be like key="[a,b]" or key=a,b It also allows nested '
+    #     'list/tuple values, e.g. key="[(a,b),(c,d)]" Note that the quotation '
+    #     'marks are necessary and that no white space is allowed.')
+    # parser.add_argument(
+    #     '--cfg-options',
+    #     nargs='+',
+    #     action=DictAction,
+    #     help='override some settings in the used config, the key-value pair '
+    #     'in xxx=yyy format will be merged into config file. If the value to '
+    #     'be overwritten is a list, it should be like key="[a,b]" or key=a,b '
+    #     'It also allows nested list/tuple values, e.g. key="[(a,b),(c,d)]" '
+    #     'Note that the quotation marks are necessary and that no white space '
+    #     'is allowed.')
     parser.add_argument(
         '--launcher',
         choices=['none', 'pytorch', 'slurm', 'mpi'],
